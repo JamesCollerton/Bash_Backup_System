@@ -1,2 +1,3 @@
-# Bash_Exercises
-Exercises to practice Bash
+#Bash Backup System 
+
+System written in Bash for backing up a given folder.
