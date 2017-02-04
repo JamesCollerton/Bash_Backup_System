@@ -1,3 +1,6 @@
+# Sources all the files we need. Sets location relative to current
+# place.
+
 parent_path=$( cd "$(dirname "${BASH_SOURCE}")" ; pwd -P )
 cd "$parent_path"
 
@@ -34,12 +37,12 @@ function readDirectories {
 	rm ../Configurations/config.sh
 	touch ../Configurations/config.sh
 
-	echo "backUpDirectory=$backUpDirectory" >> Configurations/config.sh 
+	echo "backUpDirectory=$backUpDirectory" >> ../Configurations/config.sh 
 	echo "Written back up directory location"
 
 	newline
 
-	echo "backLocation=$backUpLocation" >> Configurations/config.sh
+	echo "backLocation=$backUpLocation" >> ../Configurations/config.sh
 	echo "Written back up location"
 
 	newline
