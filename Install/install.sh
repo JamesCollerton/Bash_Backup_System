@@ -1,34 +1,59 @@
-clear
+parent_path=$( cd "$(dirname "${BASH_SOURCE}")" ; pwd -P )
+cd "$parent_path"
 
-echo "-------------------------------------------"
-echo ""
-echo "Currently installing bash backup"
-echo ""
-echo "-------------------------------------------"
+source ../bin/formatting.sh
 
-echo ""
-echo ""
+# Used to print the welcome for the back up
+function printWelcome {
 
-echo "Enter directory to back up."
-read backUpDirectory
+	clear
 
-echo ""
-echo ""
+	echo "-------------------------------------------"
+	echo ""
+	echo "Currently installing bash backup"
+	echo ""
+	echo "-------------------------------------------"
 
-echo "Enter directory to back up to."
-read backUpLocation
+}
 
-echo ""
-echo ""
+# Reads the directories and then writes them to a config file 
+function readDirectories {
 
-rm Configurations/config.sh
-touch Configurations/config.sh
+	newline
 
-echo "backUpDirectory=$backUpDirectory" >> Configurations/config.sh 
-echo "Written back up directory location"
-echo ""
+	echo "Enter directory to back up."
+	read backUpDirectory
 
-echo "backLocation=$backUpLocation" >> Configurations/config.sh
-echo "Written back up location"
-echo ""
+	newline
+
+	echo "Enter directory to back up to."
+	read backUpLocation
+
+	newline
+
+	rm ../Configurations/config.sh
+	touch ../Configurations/config.sh
+
+	echo "backUpDirectory=$backUpDirectory" >> Configurations/config.sh 
+	echo "Written back up directory location"
+
+	newline
+
+	echo "backLocation=$backUpLocation" >> Configurations/config.sh
+	echo "Written back up location"
+
+	newline
+
+}
+
+# Main function, prints the welcome and then reads the directories.
+function main {
+
+	printWelcome
+	readDirectories
+
+}
+
+# Runs main
+main
 
