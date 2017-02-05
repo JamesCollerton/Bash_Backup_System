@@ -1,2 +1,2 @@
-backUpDirectory=[A
-backLocation=
+backUpDirectory=/Users/JamesCollerton/Documents/Programming/Git_Folders/Bash_Backup_System/Bash_Backup_System/Install
+backUpLocation=/Users/JamesCollerton/Documents/Programming/Git_Folders/Bash_Backup_System/Bash_Backup_System/Install

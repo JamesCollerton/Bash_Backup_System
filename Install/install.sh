@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Sources all the files we need. Sets location relative to current
 # place.
 
@@ -37,11 +39,7 @@ function readDirectories {
 	rm ../Configurations/config.sh
 	touch ../Configurations/config.sh
 
-	exists=$(checkDirectoryExists "$backUpDirectory")
-
-	echo "Exists: $exists"
-	
-	if [ "$exists" ]; then
+	if checkDirectoryExists $backUpDirectory; then
 		echo "backUpDirectory=$backUpDirectory" >> ../Configurations/config.sh 
 		echo "Written back up directory location"
 	else
@@ -50,13 +48,14 @@ function readDirectories {
 	fi
 
 	newline
-	
-	exists=$(checkDirectoryExists "$backUpDirectory")
 
-	echo "Exists: $exists"
-	
-	echo "backLocation=$backUpLocation" >> ../Configurations/config.sh
-	echo "Written back up location"
+	if checkDirectoryExists "$backUpLocation"; then
+		echo "backUpLocation=$backUpLocation" >> ../Configurations/config.sh
+		echo "Written back up location"
+	else
+		echo "Directory does not exist."
+		exit
+	fi
 
 	newline
 
@@ -65,14 +64,11 @@ function readDirectories {
 # Used to check the directory we're setting actually exists.
 function checkDirectoryExists {
 
-	local directory="$arg1"
-
-	if [ -d "$directory" ]; then
-		echo "1"
-		return
+	if [ -d "$1" ]; then
+		return 0
+	else
+		return 1
 	fi
-
-	echo "0"
 
 }
 
