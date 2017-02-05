@@ -37,15 +37,42 @@ function readDirectories {
 	rm ../Configurations/config.sh
 	touch ../Configurations/config.sh
 
-	echo "backUpDirectory=$backUpDirectory" >> ../Configurations/config.sh 
-	echo "Written back up directory location"
+	exists=$(checkDirectoryExists "$backUpDirectory")
+
+	echo "Exists: $exists"
+	
+	if [ "$exists" ]; then
+		echo "backUpDirectory=$backUpDirectory" >> ../Configurations/config.sh 
+		echo "Written back up directory location"
+	else
+		echo "Directory does not exist."
+		exit
+	fi
 
 	newline
+	
+	exists=$(checkDirectoryExists "$backUpDirectory")
 
+	echo "Exists: $exists"
+	
 	echo "backLocation=$backUpLocation" >> ../Configurations/config.sh
 	echo "Written back up location"
 
 	newline
+
+}
+
+# Used to check the directory we're setting actually exists.
+function checkDirectoryExists {
+
+	local directory="$arg1"
+
+	if [ -d "$directory" ]; then
+		echo "1"
+		return
+	fi
+
+	echo "0"
 
 }
 

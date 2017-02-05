@@ -1,2 +1,2 @@
-backUpDirectory=1
-backLocation=2
+backUpDirectory=[A
+backLocation=
