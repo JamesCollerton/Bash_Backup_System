@@ -72,11 +72,27 @@ function checkDirectoryExists {
 
 }
 
+# Used to read how often we want to take a backup. 
+function readTimings {
+	
+	newline
+
+	echo "How often would you like to take a back up (hours)."
+	read numberOfHours
+
+	newline
+	
+	echo "numberOfHours=$numberOfHours" >> ../Configurations/config.sh
+	echo "Number of hours successfully read."
+
+}
+
 # Main function, prints the welcome and then reads the directories.
 function main {
 
 	printWelcome
 	readDirectories
+	readTimings
 
 }
 
