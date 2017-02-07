@@ -79,11 +79,20 @@ function readTimings {
 
 	echo "How often would you like to take a back up (hours)."
 	read numberOfHours
+	
+	parseInteger "$numberOfHours"
 
 	newline
 	
 	echo "numberOfHours=$numberOfHours" >> ../Configurations/config.sh
 	echo "Number of hours successfully read."
+
+}
+
+function parseInteger {
+
+	local integerInput=$1
+	echo "$integerInput"
 
 }
 
