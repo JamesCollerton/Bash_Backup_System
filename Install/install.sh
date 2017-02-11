@@ -8,6 +8,14 @@ cd "$parent_path"
 
 source ../bin/formatting.sh
 
+# This function is used to define any global
+# variables we need
+function defineGlobalVariables {
+	
+	configFileLoc="../Configurations/config.sh"
+
+}
+
 # Used to print the welcome for the back up
 function printWelcome {
 
@@ -36,7 +44,7 @@ function readDirectories {
 
 	newline
 
-	rm ../Configurations/config.sh
+	rm "$configFileLoc"
 	touch ../Configurations/config.sh
 
 	if checkDirectoryExists $backUpDirectory; then
@@ -85,8 +93,10 @@ function readTimings {
 	if parseInteger "$numberOfHours" ; then
 		echo "numberOfHours=$numberOfHours" >> ../Configurations/config.sh
 		echo "Written number of hours"
+		newline
 	else
 		echo "Number of hours is not an integer"
+		newline
 		exit
 	fi
 
@@ -95,7 +105,6 @@ function readTimings {
 function parseInteger {
 
 	local integerInput=$1
-	echo "$integerInput"
 
 	local integerRegEx='^[0-9]+$'
 	if ! [[ "$integerInput" =~ $integerRegEx ]] ; then
@@ -109,6 +118,7 @@ function parseInteger {
 # Main function, prints the welcome and then reads the directories.
 function main {
 
+	defineGlobalVariables
 	printWelcome
 	readDirectories
 	readTimings
