@@ -45,10 +45,10 @@ function readDirectories {
 	newline
 
 	rm "$configFileLoc"
-	touch ../Configurations/config.sh
+	touch "$configFileLoc"
 
 	if checkDirectoryExists $backUpDirectory; then
-		echo "backUpDirectory=$backUpDirectory" >> ../Configurations/config.sh 
+		echo "backUpDirectory=$backUpDirectory" >> "$configFileLoc" 
 		echo "Written back up directory location"
 	else
 		echo "Directory does not exist."
@@ -58,7 +58,7 @@ function readDirectories {
 	newline
 
 	if checkDirectoryExists "$backUpLocation"; then
-		echo "backUpLocation=$backUpLocation" >> ../Configurations/config.sh
+		echo "backUpLocation=$backUpLocation" >> "$configFileLoc"
 		echo "Written back up location"
 	else
 		echo "Directory does not exist."
@@ -91,7 +91,7 @@ function readTimings {
 	newline
 
 	if parseInteger "$numberOfHours" ; then
-		echo "numberOfHours=$numberOfHours" >> ../Configurations/config.sh
+		echo "numberOfHours=$numberOfHours" >> "$configFileLoc"
 		echo "Written number of hours"
 		newline
 	else
