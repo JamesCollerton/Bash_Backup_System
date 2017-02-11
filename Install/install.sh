@@ -80,12 +80,15 @@ function readTimings {
 	echo "How often would you like to take a back up (hours)."
 	read numberOfHours
 	
-	parseInteger "$numberOfHours"
-
 	newline
-	
-	echo "numberOfHours=$numberOfHours" >> ../Configurations/config.sh
-	echo "Number of hours successfully read."
+
+	if parseInteger "$numberOfHours" ; then
+		echo "numberOfHours=$numberOfHours" >> ../Configurations/config.sh
+		echo "Written number of hours"
+	else
+		echo "Number of hours is not an integer"
+		exit
+	fi
 
 }
 
@@ -93,6 +96,13 @@ function parseInteger {
 
 	local integerInput=$1
 	echo "$integerInput"
+
+	local integerRegEx='^[0-9]+$'
+	if ! [[ "$integerInput" =~ $integerRegEx ]] ; then
+		return 1
+	else
+		return 0
+	fi
 
 }
 
