@@ -116,7 +116,7 @@ function parseInteger {
 }
 
 # Main function, prints the welcome and then reads the directories.
-function main {
+function installMain {
 
 	defineGlobalVariables
 	printWelcome
@@ -126,5 +126,5 @@ function main {
 }
 
 # Runs main
-main
+installMain
 

@@ -1,3 +1,3 @@
-backUpDirectory=/Users/JamesCollerton/Documents/Programming/Git_Folders/Bash_Backup_System/Bash_Backup_System/bin
-backUpLocation=/Users/JamesCollerton/Documents/Programming/Git_Folders/Bash_Backup_System/Bash_Backup_System/bin
+backUpDirectory=/Users/JamesCollerton/Documents/Programming/Git_Folders/Bash_Backup_System/Bash_Backup_System/Testing/TestingFolders/BackUpFolder
+backUpLocation=/Users/JamesCollerton/Documents/Programming/Git_Folders/Bash_Backup_System/Bash_Backup_System/Testing/TestingFolders/BackUpLocation
 numberOfHours=1
