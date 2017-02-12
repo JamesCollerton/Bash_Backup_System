@@ -12,7 +12,13 @@ function compressLocationFolder {
 
 	backUpDirectoryNoSlash="${backUpDirectory:1:${#backUpDirectory}}"
 	echo "$backUpDirectoryNoSlash"
-	tar czf $(date +%Y%m%d-%H%M%S).tar.gz "$backUpDirectoryNoSlash";
+	newline
+
+	backUpDirectoryDot=."$backUpDirectory"
+	echo "$backUpDirectoryDot"
+	newline
+
+	tar -cvzf $(date +%Y%m%d-%H%M%S).tar.gz -C / "$backUpDirectoryNoSlash";
 
 }
 
