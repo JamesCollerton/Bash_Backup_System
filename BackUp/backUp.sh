@@ -20,6 +20,15 @@ function printBackUpStartMessage {
 
 }
 
+# Used to compress the folder we want to back up.
+function compressLocationFolder {
+
+	backUpDirectoryNoSlash="${backUpDirectory:1:${#backUpDirectory}}"
+
+	tar -cvzf $(date +%Y%m%d-%H%M%S).tar.gz -C / "$backUpDirectoryNoSlash";
+
+}
+
 # Move the folder to the backup location
 function moveCompressedFolder {
 
@@ -30,7 +39,6 @@ function moveCompressedFolder {
 
 }
 
-
 function printBackUpEndMessage {
 	
 	newline
@@ -40,15 +48,6 @@ function printBackUpEndMessage {
 	echo "---------------------------------------"
 
 	newline
-
-}
-
-# Used to compress the folder we want to back up.
-function compressLocationFolder {
-
-	backUpDirectoryNoSlash="${backUpDirectory:1:${#backUpDirectory}}"
-
-	tar -cvzf $(date +%Y%m%d-%H%M%S).tar.gz -C / "$backUpDirectoryNoSlash";
 
 }
 
