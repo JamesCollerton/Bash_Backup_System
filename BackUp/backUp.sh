@@ -20,14 +20,16 @@ function printBackUpStartMessage {
 
 }
 
-# Used to compress the folder we want to back up.
-function compressLocationFolder {
+# Move the folder to the backup location
+function moveCompressedFolder {
 
-	backUpDirectoryNoSlash="${backUpDirectory:1:${#backUpDirectory}}"
+	# Found in the config.sh file
+	backUpLocation="$backUpLocation"
 
-	tar -cvzf $(date +%Y%m%d-%H%M%S).tar.gz -C / "$backUpDirectoryNoSlash";
+	mv *.tar.gz "$backUpLocation"
 
 }
+
 
 function printBackUpEndMessage {
 	
@@ -55,6 +57,7 @@ function backUpMain {
 
 	printBackUpStartMessage
 	compressLocationFolder
+	moveCompressedFolder
 	printBackUpEndMessage
 
 }
