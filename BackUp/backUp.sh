@@ -5,10 +5,13 @@ parent_path=$( cd "$(dirname "${BASH_SOURCE}")" ; pwd -P )
 cd "$parent_path"
 
 source ../bin/formatting.sh
+source ../bin/monitoring.sh
 source ../Configurations/config.sh
 
 # Prints the message when we start.
 function printBackUpStartMessage {
+
+	clear
 
 	newline
 
@@ -39,6 +42,14 @@ function moveCompressedFolder {
 
 }
 
+function incrementBackUpCounter {
+
+	local backUpCounter="$backUpCounter"
+	backUpCounter=$((backUpCounter+1))
+	echo backUpCounter="$backUpCounter" > ../bin/monitoring.sh
+
+}
+
 function printBackUpEndMessage {
 	
 	newline
@@ -57,6 +68,7 @@ function backUpMain {
 	printBackUpStartMessage
 	compressLocationFolder
 	moveCompressedFolder
+	incrementBackUpCounter
 	printBackUpEndMessage
 
 }
