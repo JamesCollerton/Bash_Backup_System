@@ -18,7 +18,9 @@ function checkBackUpLocationSize {
 
 	local backUpLocation="$backUpLocation"
 
-	du -sh "$backUpLocation"	
+	backUpLocationSize=$(du -sh "$backUpLocation" | sed 's/[^0-9]//g')
+
+	echo "$backUpLocationSize"
 
 }
 
@@ -33,7 +35,9 @@ function checkNumberOfBackUps {
 
 	local backUpLocation="$backUpLocation"
 
-	ls -l | wc -l	
+	ls -l | wc -l | sed 's/ //g'	
+
+	newline
 
 }
 
