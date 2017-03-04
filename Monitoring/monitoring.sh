@@ -5,6 +5,7 @@ parent_path=$( cd "$(dirname "${BASH_SOURCE}")" ; pwd -P )
 cd "$parent_path"
 
 source ../bin/formatting.sh
+source ../bin/monitoring.sh
 source ../Configurations/config.sh
 
 # Check the size of the back up location
@@ -34,8 +35,18 @@ function checkNumberOfBackUps {
 	newline
 
 	local backUpLocation="$backUpLocation"
+	local numberPredictedBackUps="$backUpCounter"
 
-	ls -l | wc -l | sed 's/ //g'	
+	local numberBackUps=$( ls -l | wc -l | sed 's/ //g')
+
+	if [ "$numberBackUps" -ne "$numberPredictedBackUps" ] 
+		then
+			echo "Error"
+			exit
+	fi	
+
+	echo "Actual number: $numberBackUps"
+	echo "Predicted number: $numberPredictedBackUps"
 
 	newline
 
