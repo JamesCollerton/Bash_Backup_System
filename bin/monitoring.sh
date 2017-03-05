@@ -1,1 +1,1 @@
-backUpCounter=2
+backUpCounter=1
