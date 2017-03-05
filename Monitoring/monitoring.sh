@@ -21,7 +21,13 @@ function checkBackUpLocationSize {
 
 	backUpLocationSize=$(du -sh "$backUpLocation" | sed 's/[^0-9]//g')
 
-	echo "$backUpLocationSize"
+	if [ "$backUpLocationSize" -eq 0 ]
+		then
+			echo "Back up location empty"
+			exit
+	fi
+
+	echo "Current back up location size: $backUpLocationSize"
 
 }
 
@@ -41,19 +47,20 @@ function checkNumberOfBackUps {
 
 	if [ "$numberBackUps" -ne "$numberPredictedBackUps" ] 
 		then
-			echo "Error"
+			echo "Incorrect number of backups made."
 			exit
 	fi	
 
-	echo "Actual number: $numberBackUps"
-	echo "Predicted number: $numberPredictedBackUps"
-
 	newline
+
+	echo "Correct number of backups made: $numberBackUps"
 
 }
 
 # Main for the monitoring section
 function monitoringMain {
+
+	clear
 
 	checkBackUpLocationSize
 	checkNumberOfBackUps
