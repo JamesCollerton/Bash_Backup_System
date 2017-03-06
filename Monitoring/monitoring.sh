@@ -46,16 +46,11 @@ function checkNumberOfBackUps {
 	local numberBackUps=$( ls -l "$backUpLocation"  | wc -l | sed 's/ //g')
 	numberBackUps=$(($numberBackUps-1))
 	
-	echo "Number backups: $numberBackUps"
-	echo "Number predicted backups: $numberPredictedBackUps"
-
 	if [ "$numberBackUps" -ne "$numberPredictedBackUps" ] 
 		then
 			echo "Incorrect number of backups made."
 			exit
 	fi	
-
-	newline
 
 	echo "Correct number of backups made: $numberBackUps"
 
