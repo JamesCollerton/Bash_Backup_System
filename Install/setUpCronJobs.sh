@@ -8,7 +8,13 @@ source ../bin/formatting.sh
 
 function setUpCronJob {
 
+	newline
+
 	echo "Setting up Cron Job"
+
+	
+
+	newline
 
 }
 
