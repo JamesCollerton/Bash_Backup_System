@@ -49,6 +49,7 @@ function checkNumberOfBackUps {
 	if [ "$numberBackUps" -ne "$numberPredictedBackUps" ] 
 		then
 			echo "Incorrect number of backups made."
+			../Email/sendBackUpFailedEmail.sh
 			exit
 	fi	
 
