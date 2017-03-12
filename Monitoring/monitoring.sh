@@ -61,8 +61,6 @@ function checkNumberOfBackUps {
 # Main for the monitoring section
 function monitoringMain {
 
-	clear
-
 	checkBackUpLocationSize
 	checkNumberOfBackUps
 

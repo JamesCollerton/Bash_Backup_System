@@ -19,12 +19,16 @@ function printBackUpStartMessage {
 	echo "Back Up Beginning"
 	echo "---------------------------------------"
 
-	newline
-
 }
 
 # Used to compress the folder we want to back up.
 function compressLocationFolder {
+
+	newline
+
+	echo "Compressing location folder"
+
+	newline
 
 	backUpDirectoryNoSlash="${backUpDirectory:1:${#backUpDirectory}}"
 
@@ -35,6 +39,10 @@ function compressLocationFolder {
 # Move the folder to the backup location
 function moveCompressedFolder {
 
+	newline
+
+	echo "Moving compressed folder"
+
 	# Found in the config.sh file
 	backUpLocation="$backUpLocation"
 
@@ -44,6 +52,10 @@ function moveCompressedFolder {
 
 function incrementBackUpCounter {
 
+	newline
+
+	echo "Incrementing back up counter"
+
 	local backUpCounter="$backUpCounter"
 	backUpCounter=$((backUpCounter+1))
 	echo backUpCounter="$backUpCounter" > ../bin/monitoring.sh
@@ -51,6 +63,10 @@ function incrementBackUpCounter {
 }
 
 function runBackUpCheck {
+
+	newline
+
+	echo "Running back up check"
 	
 	bash ../Monitoring/monitoring.sh	
 
