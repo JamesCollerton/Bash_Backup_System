@@ -50,6 +50,12 @@ function incrementBackUpCounter {
 
 }
 
+function runBackUpCheck {
+	
+	bash ../Monitoring/monitoring.sh	
+
+}
+
 function printBackUpEndMessage {
 	
 	newline
@@ -69,6 +75,7 @@ function backUpMain {
 	compressLocationFolder
 	moveCompressedFolder
 	incrementBackUpCounter
+	runBackUpCheck	
 	printBackUpEndMessage
 
 }
